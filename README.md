@@ -31,8 +31,6 @@ Here is an example using the `RGB` color space and HOG parameters of `orientatio
 
 The code for the HOG feature extraction is contained in the fourth code cell of the jupyter notebook. 
 
-![alt text][image2]
-
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
 I settled with YCrCb, although it is not the fastest colorspace, because I got almost 0.99 accuracy in the SVC classifier, unlike RGB and YUV colorspaces.
@@ -61,16 +59,19 @@ hist_feat = True
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to hardcode the scales and the Y start and Y stop pixel values. Researching through previous projects and udacity forums, I decided to stick with a popular 3 scale pipeline, that has hardcoded Y pixel start-stop and scale values.
-
-
-![alt text][image3]
+I decided to hardcode the scales and the Y start and Y stop pixel values. Researching through previous projects and udacity forums, I decided to stick with a popular 3 scale pipeline, that has hardcoded Y pixel start-stop and scale values. Hardcoded overlapping pixel values work well, but I suspect this approach would work in a crowded street. So it should be upgraded to a dynamic scaling approach.
+Code can be seen in code block 9 in the notebook.
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Ultimately I searched on three scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a good result.  Here are some example images:
 
-![alt text][image4]
+![pipeline1](https://github.com/tugrulzure/carndp5/blob/master/report/5.png)
+![pipeline2](https://github.com/tugrulzure/carndp5/blob/master/report/6.png)
+![pipeline3](https://github.com/tugrulzure/carndp5/blob/master/report/7.png)
+
+To improve the performance of the classifier, adding the heat map thresholding will prevent false detections, however when the threshold is set higher than it has to be, real detections can be filtered out like the third picture. Also, lowering the threshold resulted in more false positives, so I settled with the values I used in this project. 
+
 ---
 
 ### Video Implementation
