@@ -25,25 +25,44 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Here is an example using the `RGB` color space and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
 
-The code for this step is contained in the fourth code cell of the jupyter notebook. 
+![hog_feat](https://github.com/tugrulzure/carndp5/blob/master/report/2.png)
+
+The code for the HOG feature extraction is contained in the fourth code cell of the jupyter notebook. 
 
 ![alt text][image2]
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I settled with YCrCb, although it is not the fastest colorspace, because I got almost 0.99 accuracy in the SVC classifier, unlike RGB and YUV colorspaces.
+Going with RGB and YUV results in longer HOG feature extraction times, but this is done only once, so I went with YCrCb in this project.
+Number of directions depends on the computing power and considering this project is not going to operate in realtime anyways, I went with popular choice among Udacity students which are between 8-12 orientations, and there rest of the parameters are included in item 3 of the project.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+I trained a linear SVM using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, as shown in code cell 6 in the notebook.
+
+My final parameters are shown below:
+
+```python
+colorspace = 'YCrCb'
+orient = 10
+pix_per_cell = 8
+cell_per_block = 2
+hog_channel = 'ALL' # Can be 0, 1, 2, or "ALL"
+spatial_size = (32, 32) # Spatial binning dimensions
+hist_bins = 64    # Number of histogram bins
+spatial_feat = True 
+hist_feat = True
+```
 
 ### Sliding Window Search
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+I decided to hardcode the scales and the Y start and Y stop pixel values. Researching through previous projects and udacity forums, I decided to stick with a popular 3 scale pipeline, that has hardcoded Y pixel start-stop and scale values.
+
 
 ![alt text][image3]
 
