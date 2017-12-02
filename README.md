@@ -34,7 +34,7 @@ The code for the HOG feature extraction is contained in the fourth code cell of 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
 I settled with YCrCb, although it is not the fastest colorspace, because I got almost 0.99 accuracy in the SVC classifier, unlike RGB and YUV colorspaces.
-Going with RGB and YUV results in longer HOG feature extraction times, but this is done only once, so I went with YCrCb in this project.
+Going with RGB and YUV results in shorter HOG feature extraction times, but this is done only once, so I went with YCrCb in this project.
 Number of directions depends on the computing power and considering this project is not going to operate in realtime anyways, I went with popular choice among Udacity students which are between 8-12 orientations, and there rest of the parameters are included in item 3 of the project.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
