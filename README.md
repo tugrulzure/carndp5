@@ -70,7 +70,9 @@ Ultimately I searched on three scales using YCrCb 3-channel HOG features plus sp
 ![pipeline2](https://github.com/tugrulzure/carndp5/blob/master/report/6.png)
 ![pipeline3](https://github.com/tugrulzure/carndp5/blob/master/report/7.png)
 
-To improve the performance of the classifier, adding the heat map thresholding will prevent false detections, however when the threshold is set higher than it has to be, real detections can be filtered out like the third picture. Also, lowering the threshold resulted in more false positives, so I settled with the values I used in this project. 
+To improve the performance of the classifier, adding the heat map thresholding will prevent false detections, however when the threshold is set higher than it has to be, real detections can be filtered out like the third picture. Optimizing the thresholding parameter can be useful to obtain a better result as seen below.
+
+![pipeline4](https://github.com/tugrulzure/carndp5/blob/master/report/8.png)
 
 ---
 
