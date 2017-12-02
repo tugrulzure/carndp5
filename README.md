@@ -54,6 +54,7 @@ hist_bins = 64    # Number of histogram bins
 spatial_feat = True 
 hist_feat = True
 ```
+Features are scaled to zero mean and unit variance before training the classifier using StandardScaler().
 
 ### Sliding Window Search
 
