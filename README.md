@@ -102,3 +102,9 @@ The first problem is that the bounding box bounces around and loses the detected
 Second problem is choosing HOG parameters and colorspaces. It requires a lot of trial and error to get it to work, and optimizing these parameters would require hours. Mine worked OK most of the time, but it's because I read up on it a lot before implementing the parameters. 
 
 To make it more robust, first I would train the SVM with a larger dataset, average the previous bounding box detections, and implement a filter to normalize the input images/video, to compensate for the overly bright conditions or darker colored cars. A dynamic scaling for detecting cars is a must for a robust system, with more scales than three.
+
+*Special thanks to:
+https://github.com/jeremy-shannon/
+https://github.com/ILYAmLV/
+https://github.com/mithi/
+and Udacity forums for code snippets and awesome tips.
